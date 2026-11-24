@@ -1,3 +1,11 @@
-<a class="text-muted" href="{% url 'blog:category_posts' post.category.slug %}">
-  {{ post.category.title }}
-</a>
+{% if post.category %}
+  {% if post.category.is_published and post.category.slug %}
+    <a class="text-muted" href="{% url 'blog:category_posts' post.category.slug %}">
+      {{ post.category.title }}
+    </a>
+  {% else %}
+    {{ post.category.title }}
+  {% endif %}
+{% else %}
+  Без категории
+{% endif %}

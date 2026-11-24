@@ -39,12 +39,15 @@ class PostAdmin(admin.ModelAdmin):
         'location',
         'category',
         'is_published',
+        'is_author_published',
         'image',
         'created_at',
     )
     list_editable = ('is_published',)
     search_fields = ('title', 'text')
-    list_filter = ('is_published', 'category', 'created_at')
+    list_filter = (
+        'is_published', 'is_author_published', 'category', 'created_at',
+    )
 
 
 @admin.register(Comment)
